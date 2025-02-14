@@ -30,9 +30,9 @@ class PhotoAdapter(private val photos: List<Photo>) : RecyclerView.Adapter<Photo
 
         fun bind(photo: Photo) {
             titleTextView.text = photo.title
-            // Load the thumbnail image using Glide or Picasso
+            val randomImageUrl = "https://picsum.photos/200/300?random=${photo.title.hashCode()}"
             Glide.with(itemView.context)
-                .load(photo.thumbnailUrl)
+                .load(randomImageUrl)
                 .into(thumbnailImageView)
         }
     }
