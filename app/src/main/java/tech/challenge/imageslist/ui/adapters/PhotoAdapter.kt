@@ -10,7 +10,10 @@ import com.bumptech.glide.Glide
 import tech.challenge.imageslist.R
 import tech.challenge.imageslist.models.Photo
 
-class PhotoAdapter(private val photos: List<Photo>) : RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
+class PhotoAdapter(
+    private val photos: MutableList<Photo>,
+    private val loadMore: () -> Unit // Callback to load more data
+) : RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_photo, parent, false)
@@ -20,9 +23,21 @@ class PhotoAdapter(private val photos: List<Photo>) : RecyclerView.Adapter<Photo
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val photo = photos[position]
         holder.bind(photo)
+
+        // Load more data when the user reaches the end of the list
+        if (position == photos.size - 1) {
+            loadMore()
+        }
     }
 
     override fun getItemCount(): Int = photos.size
+
+    // Add new photos to the list
+    fun addPhotos(newPhotos: List<Photo>) {
+        val oldSize = photos.size
+        photos.addAll(newPhotos)
+        notifyItemRangeInserted(oldSize, newPhotos.size)
+    }
 
     class PhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
@@ -30,7 +45,11 @@ class PhotoAdapter(private val photos: List<Photo>) : RecyclerView.Adapter<Photo
 
         fun bind(photo: Photo) {
             titleTextView.text = photo.title
+
+            // Generate a random image URL using the photo's title as a seed
             val randomImageUrl = "https://picsum.photos/200/300?random=${photo.title.hashCode()}"
+
+            // Load the random image using Glide
             Glide.with(itemView.context)
                 .load(randomImageUrl)
                 .into(thumbnailImageView)
