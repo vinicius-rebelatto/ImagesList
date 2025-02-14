@@ -67,4 +67,20 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    // Retrofit for API calls
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson) // For JSON parsing
+
+    // RecyclerView
+    implementation (libs.androidx.recyclerview)
+
+    // ConstraintLayout
+    implementation (libs.androidx.constraintlayout)
+
+    // Lifecycle components (optional, for ViewModel and LiveData)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+
+    // Coroutines (optional, for asynchronous programming)
+    implementation (libs.kotlinx.coroutines.android)
 }
