@@ -37,15 +37,24 @@ O projeto está organizado nos seguintes pacotes:
 
 ---
 
-## 🚀 Começando
+## 🖼️ Como Funciona
 
-### Pré-requisitos
+### 📡 Obtenção de Dados:
 
-- Android Studio (recomendado: última versão).  
-- Um dispositivo Android ou emulador com nível de API 21 ou superior.  
+- A API pública `https://jsonplaceholder.typicode.com/photos` não fornece mais imagens válidas nos links do arquivo JSON. Por isso, para cada objeto retornado, foi atribuída uma imagem aleatória obtida de outra API.
+  Exemplo de resposta da API:
+  ```json
+  {
+    "albumId": 1,
+    "id": 1,
+    "title": "accusamus beatae ad facilis cum similique qui sunt",
+    "url": "https://via.placeholder.com/600/92c952",
+    "thumbnailUrl": "https://via.placeholder.com/150/92c952"
+  }
+  ```
+- O app exibe uma lista de imagens obtidas da API pública `https://picsum.photos`.
+- Cada item da lista apresenta um título e uma miniatura.
 
-### Instalação
 
-1. **Clone o repositório**:  
-   ```bash
-   git clone https://github.com/seu-usuario/image-list-app.git
+
+
