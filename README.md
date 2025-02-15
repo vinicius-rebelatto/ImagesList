@@ -9,7 +9,7 @@ O **Aplicativo de Lista de Imagens** é um app Android que exibe uma lista de im
 - **Paginação**: Carrega mais imagens conforme o usuário chega ao final da lista.  
 - **Carregamento de Imagens**: Usa **Glide** para carregar e exibir imagens de forma eficiente.  
 - **Separação de Responsabilidades**: Segue o padrão de arquitetura **MVVM** para um código mais limpo e fácil de manter.  
-- **Integração com API**: Obtém dados de uma API pública (`https://picsum.photos`).  
+- **Integração com API**: Obtém dados das APIs públicas (`https://jsonplaceholder.typicode.com/` e `https://picsum.photos`).  
 
 ---
 
