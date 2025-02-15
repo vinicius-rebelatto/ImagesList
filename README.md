@@ -66,34 +66,25 @@ O projeto está organizado nos seguintes pacotes:
 
 ---
 
-### Dependencias (Gradle)
+### 📦 Dependências (Gradle)
 
 ```kts
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.appcompat)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    // Retrofit e Gson (Consumo de API)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    implementation (libs.androidx.recyclerview)
-    implementation (libs.androidx.constraintlayout)
-    implementation (libs.androidx.lifecycle.viewmodel.ktx)
-    implementation (libs.androidx.lifecycle.livedata.ktx)
-    implementation (libs.kotlinx.coroutines.android)
-    implementation (libs.glide)
+
+    // Componentes de UI
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.constraintlayout)
+
+    // Arquitetura (ViewModel e LiveData)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Glide (Carregamento de Imagens)
+    implementation(libs.glide)
 }
 ```
 
