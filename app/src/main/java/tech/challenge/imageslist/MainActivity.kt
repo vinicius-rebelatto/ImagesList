@@ -2,49 +2,40 @@ package tech.challenge.imageslist
 
     import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+    import androidx.activity.viewModels
+    import androidx.appcompat.app.AppCompatActivity
+    import androidx.lifecycle.Observer
+    import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 import tech.challenge.imageslist.api.RetrofitClient
     import tech.challenge.imageslist.models.Photo
     import tech.challenge.imageslist.ui.adapters.PhotoAdapter
+    import tech.challenge.imageslist.viewmodels.PhotoViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: PhotoAdapter
-    private val photos = mutableListOf<Photo>()
-    private var currentPage = 1
-    private val limit = 10
+    private val viewModel: PhotoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // Set the layout
+        setContentView(R.layout.activity_main)
 
-        // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Initialize the adapter
-        adapter = PhotoAdapter(photos) { loadMorePhotos() }
+        adapter = PhotoAdapter(mutableListOf()) { viewModel.loadMorePhotos() }
         recyclerView.adapter = adapter
 
-        // Load the first page of data
-        loadMorePhotos()
-    }
+        // Observe the photos LiveData
+        viewModel.photos.observe(this, Observer { newPhotos ->
+            adapter.addPhotos(newPhotos)
+        })
 
-    private fun loadMorePhotos() {
-        lifecycleScope.launch {
-            try {
-                val newPhotos = RetrofitClient.apiService.getPhotos(currentPage, limit)
-                if (newPhotos.isNotEmpty()) {
-                    adapter.addPhotos(newPhotos)
-                    currentPage++
-                }
-            } catch (e: Exception) {
-                Log.e("MainActivity", "Error fetching photos", e)
-            }
-        }
+        // Load the first page of data
+        viewModel.loadMorePhotos()
     }
 }
