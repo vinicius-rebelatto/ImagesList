@@ -66,7 +66,7 @@ O projeto está organizado nos seguintes pacotes:
 
 ---
 
-### 📦 Dependências (Gradle)
+### 📦 Dependências (Gradle: App)
 
 ```kts
 dependencies {
