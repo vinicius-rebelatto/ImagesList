@@ -17,10 +17,11 @@ O **Aplicativo de Lista de Imagens** é um app Android que exibe uma lista de im
 
 - **Kotlin**: Linguagem principal do projeto.  
 - **ViewModel**: Gerencia os dados relacionados à interface e sobrevive a mudanças de configuração.  
-- **LiveData**: Observa mudanças nos dados e atualiza a interface automaticamente.  
-- **RecyclerView**: Exibe a lista de imagens.  
-- **Glide**: Faz o carregamento e cache de imagens a partir de URLs.  
+- **RecyclerView**: Exibe a lista de imagens.
+- **ConstraintLayout**: Permite criar layouts responsivos no xml do projeto.
 - **Retrofit**: Gerencia as requisições para a API.  
+- **Glide**: Faz o carregamento e cache de imagens a partir de URLs.
+- **LiveData**: Observa mudanças nos dados e atualiza a interface automaticamente.   
 - **Coroutines**: Controla tarefas assíncronas.  
 
 ---
@@ -62,6 +63,39 @@ O projeto está organizado nos seguintes pacotes:
 ###  Carregamento de Imagens:
 
 - Glide é usado para carregar imagens de forma eficiente e armazená-las em cache para melhor desempenho.
+
+---
+
+### Dependencias (Gradle)
+
+```kts
+dependencies {
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.appcompat)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation (libs.androidx.recyclerview)
+    implementation (libs.androidx.constraintlayout)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+    implementation (libs.kotlinx.coroutines.android)
+    implementation (libs.glide)
+}
+```
 
 ---
 
