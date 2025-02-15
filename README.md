@@ -66,6 +66,6 @@ O projeto está organizado nos seguintes pacotes:
 ---
 
 ## 🎥 Demonstração
-![Demonstração do App](./screenshots/demo.gif)
+![Demonstração do App](./demo.gif)
 
 
