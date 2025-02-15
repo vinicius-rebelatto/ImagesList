@@ -55,6 +55,17 @@ O projeto está organizado nos seguintes pacotes:
 - O app exibe uma lista de imagens obtidas da API pública `https://picsum.photos`.
 - Cada item da lista apresenta um título e uma miniatura.
 
+###  Paginação:
 
+- Quando o usuário rola até o final da lista, o aplicativo busca a próxima página de imagens
+
+###  Carregamento de Imagens:
+
+- Glide é usado para carregar imagens de forma eficiente e armazená-las em cache para melhor desempenho.
+
+---
+
+## 🎥 Demonstração
+![Demonstração do App](./screenshots/demo.gif)
 
 
